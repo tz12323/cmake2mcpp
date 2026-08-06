@@ -58,5 +58,3 @@ This project uses the following third-party libraries:
 * toml++ (MIT License)
 * nlohmann/json (MIT License)
 * CLI11 (BSD-3-Clause License)
-
-See the `LICENSES/` directory for the full license texts.
