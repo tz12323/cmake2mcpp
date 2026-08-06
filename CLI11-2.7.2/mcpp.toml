@@ -1,0 +1,11 @@
+[build]
+include_dirs = [ 'include' ]
+sources = []
+
+[package]
+name = 'CLI11'
+version = '0.1.0'
+
+[targets.CLI11]
+cxxflags = []
+kind = 'lib'

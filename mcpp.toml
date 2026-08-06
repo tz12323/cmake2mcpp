@@ -1,0 +1,9 @@
+[package]
+name = "cmake2mcpp"
+version = "0.1.0"
+license = "Apache-2.0"
+
+[dependencies]
+marzer.tomlplusplus = "3.4.0"
+nlohmann.json = "3.12.0"
+CLI11 = { path = "./CLI11-2.7.2" }
