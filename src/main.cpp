@@ -46,7 +46,7 @@ int main(int argc, char** argv) {
     }
     targets.push_back(target.value());
   }
-  if (!mcpp::TomlWrite(output_file_dir / "mcpp.toml", project, targets)) {
+  if (!mcpp::TomlWrite((output_file_dir / "mcpp.toml").string(), project, targets)) {
     std::cerr << "Failed to write TOML file." << std::endl;
     return -1;
   }
