@@ -39,7 +39,7 @@ static fs::path GetIncludeDir(const std::vector<std::string>& headers) {
 
 TargetParser::TargetParser(const fs::path& path)
     : TargetFile(path),
-      test_target({"test", "nightly", "example", "experimental"}) {};
+      test_target({"test", "nightly", "example", "experimental", "perf"}) {};
 void TargetParser::parseTargetJson() {
   std::ifstream targetFileStream(TargetFile);
   if (!targetFileStream.is_open()) {
@@ -179,6 +179,8 @@ std::optional<Target> TargetParser::parse() {
     } else if (type == "MODULE_LIBRARY") {
       target.kind = "lib";
     } else if (type == "INTERFACE_LIBRARY") {
+      target.kind = "lib";
+    } else if (type == "OBJECT_LIBRARY") {
       target.kind = "lib";
     }
   }

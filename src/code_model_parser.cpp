@@ -43,8 +43,7 @@ std::pair<Project, std::vector<fs::path>> CodeModelParser::parse() {
     fs::path cache_path;
     for (const auto& path :
          fs::directory_iterator(code_model_path.parent_path())) {
-      if (path.path().filename().string().find("cache-v2") !=
-          std::string::npos) {
+      if (path.path().filename().string().starts_with("cache-v2")) {
         cache_path = path.path();
         break;
       }

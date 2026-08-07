@@ -60,6 +60,10 @@ bool FileApiQuery::Create(const fs::path& buildDir,
   }
 
   try {
+    /// 删除旧的 build 目录，重新创建新的 build 目录
+    if (fs::exists(buildDir)) {
+      fs::remove_all(buildDir);
+    }
     fs::path queryDir =
         buildDir / ".cmake" / "api" / "v1" / "query" / "client-mcpp";
 

@@ -7,7 +7,7 @@ namespace mcpp {
 IndexParser::IndexParser(const fs::path& buildDir) {
   fs::path replyDir = buildDir / ".cmake" / "api" / "v1" / "reply";
   for (const auto& entry : fs::directory_iterator(replyDir)) {
-    if (entry.path().filename().string().find("index-") != std::string::npos) {
+    if (entry.path().filename().string().starts_with("index-")) {
       indexFilePath = entry.path();
       break;
     }
@@ -28,9 +28,10 @@ void IndexParser::ReadIndexFile() {
 };
 fs::path IndexParser::Parse() {
   ReadIndexFile();
-  if (!indexJson.contains("objects"))
-    throw std::runtime_error("Missing 'objects'");
-
+  if (!indexJson.contains("objects")) {
+    std::cerr << "Missing 'objects'" << std::endl;
+    std::exit(EXIT_FAILURE);
+  }
   for (const auto& object : indexJson["objects"]) {
     if (!object.contains("kind"))
       continue;
