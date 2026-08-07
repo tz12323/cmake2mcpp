@@ -1,9 +1,17 @@
 #include "file_api_query.hpp"
-#include <cstdio>
 #include <cstdlib>
+#include <filesystem>
 #include <fstream>
+#include <iostream>
 #include <print>
 #include <vector>
+
+#ifdef _WIN32
+constexpr auto NullDevice = "nul";
+#else
+constexpr auto NullDevice = "/dev/null";
+#endif
+
 namespace fs = std::filesystem;
 
 namespace mcpp {
@@ -23,7 +31,34 @@ bool FileApiQuery::Touch(const fs::path& file) {
 void FileApiQuery::SetCmakeExecutablePath(const fs::path& path) {
   CmakeExecutablePath = path;
 }
-bool FileApiQuery::Create(const fs::path& buildDir) {
+bool FileApiQuery::Create(const fs::path& buildDir,
+                          const std::vector<std::string>& cmake_args) {
+  /// 检查 CMakeLists.txt 是否存在
+  auto tolower = [](const std::string& str) -> std::string {
+    std::string result;
+    result.reserve(str.size());
+    for (char c : str) {
+      result.push_back(
+          static_cast<char>(std::tolower(static_cast<unsigned char>(c))));
+    }
+    return result;
+  };
+  bool hasCMakeLists = false;
+  for (const auto& file : fs::directory_iterator(buildDir.parent_path())) {
+    if (file.is_directory()) {
+      continue;
+    }
+    auto filename = tolower(file.path().filename().string());
+    if (filename == "cmakelists.txt") {
+      hasCMakeLists = true;
+    }
+  }
+  if (!hasCMakeLists) {
+    std::cerr << "No CMakeLists.txt found in the project directory."
+              << std::endl;
+    return false;
+  }
+
   try {
     fs::path queryDir =
         buildDir / ".cmake" / "api" / "v1" / "query" / "client-mcpp";
@@ -38,15 +73,21 @@ bool FileApiQuery::Create(const fs::path& buildDir) {
     ok &= Touch(queryDir / "toolchains-v1");
     if (!CmakeVersionCompare(GetCMakeVersion(), "3.26.0")) {
       ok &= Touch(queryDir / "configureLog-v1");
-      printf("CMake version >= 3.26, configureLog-v1 created\n");
+      std::cout << "CMake version >= 3.26, configureLog-v1 created\n";
     } else {
-      printf("CMake version < 3.26, configureLog-v1 not created\n");
+      std::cout << "CMake version < 3.26, configureLog-v1 not created\n";
     }
-    auto tmp =
+    auto command =
         (CmakeExecutablePath.empty() ? "cmake" : CmakeExecutablePath.string()) +
         " -B " + buildDir.string() + " -S " + buildDir.parent_path().string() +
         " -DCMAKE_EXPORT_COMPILE_COMMANDS=ON";
-    system(tmp.c_str());
+    for (const auto& arg : cmake_args) {
+      command += " -D" + arg;
+    }
+    std::cout << "Executing command: " << command << std::endl;
+    command = command + " > " + std::string(NullDevice) + " 2>&1";
+
+    system(command.c_str());
     /*     client-mcpp/
             ├── codemodel-v2      // 工程、Target、源文件、编译信息（必需）
             ├── cache-v2          // Cache 变量（可选）

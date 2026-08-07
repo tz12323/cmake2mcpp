@@ -1,38 +1,41 @@
 #include <CLI/CLI.hpp>
 #include <filesystem>
 #include <iostream>
+#include "args.hpp"
 #include "code_model_parser.hpp"
 #include "file_api_query.hpp"
 #include "index_parser.hpp"
 #include "target_parser.hpp"
 #include "toml_writer.hpp"
-
 int main(int argc, char** argv) {
   /// argument parser
+  mcpp::Args args;
   auto app = CLI::App{"CMake File API to TOML Converter"};
   argv = app.ensure_utf8(argv);
-  auto build_dir_default = std::string("build");
-  app.add_option("-b,--build", build_dir_default, "Build directory");
-  auto output_dir_default = std::string(".");
-  app.add_option("-o,--output", output_dir_default, "Output TOML file path");
-  auto cmake_executable_path_default = std::string("");
-  app.add_option("-c,--cmake", cmake_executable_path_default,
-                 "CMake executable path (optional)");
+  app.add_option("-p,--project_dir", args.poject_dir, "Project directory")
+      ->check(CLI::ExistingDirectory);
+  app.add_option("-c,--cmake_executable_path", args.cmake_executable_path,
+                 "CMake executable path")
+      ->check(CLI::ExistingFile);
+  app.add_option("-D", args.cmake_args, "CMake build arguments");
+  app.add_flag("-s,--show_cmake_args", args.show_cmake_args,
+               "Show CMake build arguments");
   CLI11_PARSE(app, argc, argv);
 
+  /// 创建 cmake2mcpp 的 File API 查询
   mcpp::FileApiQuery query;
-  if (!cmake_executable_path_default.empty()) {
-    query.SetCmakeExecutablePath(cmake_executable_path_default);
+  if (!args.cmake_executable_path.empty()) {
+    query.SetCmakeExecutablePath(args.cmake_executable_path);
   }
-  fs::path build_dir = fs::absolute(build_dir_default);
-  fs::path output_file_dir = fs::absolute(output_dir_default);
+  fs::path build_dir = fs::absolute(fs::path(args.poject_dir) / "build");
+  fs::path output_file_dir = fs::absolute(fs::path(args.poject_dir));
   std::cout << "Build directory: " << build_dir << std::endl;
   if (!query.Create(build_dir)) {
     std::cerr << "Failed to create File API query." << std::endl;
-    throw std::runtime_error("Failed to create File API query.");
+    return -1;
   }
   std::cout << "File API query created successfully." << std::endl;
-
+  /// 解析 CMake File API 输出
   auto index_parser = mcpp::IndexParser(build_dir);
   auto code_model_path = index_parser.Parse();
   auto code_model_parser = mcpp::CodeModelParser(code_model_path);
@@ -46,7 +49,8 @@ int main(int argc, char** argv) {
     }
     targets.push_back(target.value());
   }
-  if (!mcpp::TomlWrite((output_file_dir / "mcpp.toml").string(), project, targets)) {
+  if (!mcpp::TomlWrite((output_file_dir / "mcpp.toml").string(), project,
+                       targets)) {
     std::cerr << "Failed to write TOML file." << std::endl;
     return -1;
   }

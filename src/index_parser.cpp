@@ -1,4 +1,5 @@
 #include "index_parser.hpp"
+#include <cstdlib>
 #include <filesystem>
 #include <fstream>
 #include <iostream>
@@ -12,7 +13,8 @@ IndexParser::IndexParser(const fs::path& buildDir) {
     }
   }
   if (indexFilePath.empty()) {
-    throw std::runtime_error("Cannot find index file in " + replyDir.string());
+    std::cerr << "Cannot find index file in " + replyDir.string() << std::endl;
+    std::exit(EXIT_FAILURE);
   }
   std::cout << "Index file found: " << indexFilePath << std::endl;
 };

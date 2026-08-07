@@ -15,8 +15,9 @@ void CodeModelParser::ReadCodeModelFile() {
   if (file.is_open()) {
     file >> code_model_json;
   } else {
-    throw std::runtime_error("Failed to open code model file: " +
-                             code_model_path.string());
+    std::cerr << "Failed to open code model file: " << code_model_path.string()
+              << std::endl;
+    std::exit(EXIT_FAILURE);
   }
 };
 bool CodeModelParser::isTestTarget(

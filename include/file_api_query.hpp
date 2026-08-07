@@ -2,7 +2,7 @@
 
 #include <filesystem>
 #include <string>
-
+#include <vector>
 namespace mcpp {
 
 class FileApiQuery {
@@ -14,11 +14,13 @@ class FileApiQuery {
    * @return true 成功
    * @return false 失败
    */
-  bool Create(const std::filesystem::path& buildDir);
+  bool Create(const std::filesystem::path& buildDir,
+              const std::vector<std::string>& cmake_args = {});
   FileApiQuery() = default;
   FileApiQuery(const std::filesystem::path& cmakeExecutablePath)
       : CmakeExecutablePath(cmakeExecutablePath) {}
   void SetCmakeExecutablePath(const std::filesystem::path& path);
+
  private:
   std::filesystem::path CmakeExecutablePath;
   static bool Touch(const std::filesystem::path& file);

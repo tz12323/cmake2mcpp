@@ -1,7 +1,14 @@
 #include "target_parser.hpp"
 #include <filesystem>
 #include <fstream>
+#include <iostream>
 #include <optional>
+#include <regex>
+#include <string>
+static inline void rmstd(std::string& s) {
+  s = std::regex_replace(s, std::regex(R"(\s*-std=\S+)"), "");
+}
+
 namespace mcpp {
 
 static fs::path GetIncludeDir(const std::vector<std::string>& headers) {
@@ -36,8 +43,9 @@ TargetParser::TargetParser(const fs::path& path)
 void TargetParser::parseTargetJson() {
   std::ifstream targetFileStream(TargetFile);
   if (!targetFileStream.is_open()) {
-    throw std::runtime_error("Failed to open target file: " +
-                             TargetFile.string());
+    std::cerr << "Failed to open target file: " << TargetFile.string()
+              << std::endl;
+    std::exit(EXIT_FAILURE);
   }
   targetFileStream >> TargetJson;
 }
@@ -99,13 +107,33 @@ std::optional<Target> TargetParser::parse() {
   };
   if (TargetJson.contains("compileGroups")) {
     for (const auto& group : TargetJson["compileGroups"]) {
-      for (const auto& fragment : group["compileCommandFragments"]) {
-        if (fragment.contains("fragment")) {
-          target.compileArgs.push_back(fragment["fragment"].get<std::string>());
+      if (group.contains("compileCommandFragments")) {
+        for (const auto& fragment : group["compileCommandFragments"]) {
+          if (fragment.contains("fragment")) {
+            auto fragmentStr = fragment["fragment"].get<std::string>();
+            rmstd(fragmentStr);
+            if (!fragmentStr.empty()) {
+              target.compileArgs.push_back(fragmentStr);
+            }
+          }
         }
       }
-      for (const auto& include : group["includes"]) {
-        target.include_dirs.push_back(include["path"].get<std::string>());
+      if (group.contains("defines")) {
+        for (const auto& define : group["defines"]) {
+          if (!define.contains("define")) {
+            continue;
+          }
+          auto defineStr = define["define"].get<std::string>();
+          rmstd(defineStr);
+          if (!defineStr.empty()) {
+            target.defines.push_back(defineStr);
+          }
+        }
+      }
+      if (group.contains("includes")) {
+        for (const auto& include : group["includes"]) {
+          target.include_dirs.push_back(include["path"].get<std::string>());
+        }
       }
     }
   }
@@ -135,8 +163,9 @@ std::optional<Target> TargetParser::parse() {
     }
   }
   auto includeDir = GetIncludeDir(headers);
-  if (!includeDir.empty()) {  /// 避免重复添加 include 目录，和INTERFACE_LIBRARY
-                              /// 类型的 target 也没有 sources
+  if (target.include_dirs
+          .empty()) {  /// 避免重复添加 include 目录，和INTERFACE_LIBRARY
+                       /// 类型的 target 也没有 sources
     target.include_dirs.push_back(includeDir.generic_string());
   }
   if (TargetJson.contains("type")) {

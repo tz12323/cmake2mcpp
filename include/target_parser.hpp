@@ -13,6 +13,7 @@ struct Target {
   std::vector<std::string> compileArgs;
   std::vector<std::string> dependencies;
   std::vector<std::string> include_dirs;
+  std::vector<std::string> defines;
 };
 class TargetParser {
  public:

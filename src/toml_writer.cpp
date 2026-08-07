@@ -33,6 +33,7 @@ bool TomlWrite(const std::string& outputFilePath,
     toml::table buildTable;
     auto incudeDirsArray = std::vector<std::string>();
     auto sourcesArray = std::vector<std::string>();
+    auto definesArray = std::vector<std::string>();
     for (const auto& target : targets) {
       toml::table targetTable;
       targetTable.insert("kind", target.kind);
@@ -43,13 +44,18 @@ bool TomlWrite(const std::string& outputFilePath,
                              target.include_dirs.end());
       sourcesArray.insert(sourcesArray.end(), target.sources.begin(),
                           target.sources.end());
+      definesArray.insert(definesArray.end(), target.defines.begin(),
+                          target.defines.end());
     }
     auto uniqueIncludeDirs =
         std::set<std::string>(incudeDirsArray.begin(), incudeDirsArray.end());
     auto uniqueSources =
         std::set<std::string>(sourcesArray.begin(), sourcesArray.end());
+    auto uniqueDefines =
+        std::set<std::string>(definesArray.begin(), definesArray.end());
     buildTable.insert("sources", to_array(uniqueSources));
     buildTable.insert("include_dirs", to_array(uniqueIncludeDirs));
+    buildTable.insert("defines", to_array(uniqueDefines));
     root.insert("targets", targetsTable);
     root.insert("build", buildTable);
     std::ofstream outputFile(outputFilePath);
