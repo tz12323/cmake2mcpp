@@ -1,8 +1,8 @@
 #include "index_parser.hpp"
+#include <spdlog/spdlog.h>
 #include <cstdlib>
 #include <filesystem>
 #include <fstream>
-#include <iostream>
 namespace mcpp {
 IndexParser::IndexParser(const fs::path& buildDir) {
   fs::path replyDir = buildDir / ".cmake" / "api" / "v1" / "reply";
@@ -13,10 +13,10 @@ IndexParser::IndexParser(const fs::path& buildDir) {
     }
   }
   if (indexFilePath.empty()) {
-    std::cerr << "Cannot find index file in " + replyDir.string() << std::endl;
+    spdlog::error("Cannot find index file in {}", replyDir.string());
     std::exit(EXIT_FAILURE);
   }
-  std::cout << "Index file found: " << indexFilePath << std::endl;
+  spdlog::info("Index file found: {}", indexFilePath.string());
 };
 void IndexParser::ReadIndexFile() {
   std::ifstream indexFile(indexFilePath);
@@ -29,7 +29,7 @@ void IndexParser::ReadIndexFile() {
 fs::path IndexParser::Parse() {
   ReadIndexFile();
   if (!indexJson.contains("objects")) {
-    std::cerr << "Missing 'objects'" << std::endl;
+    spdlog::error("Missing 'objects' in index file");
     std::exit(EXIT_FAILURE);
   }
   for (const auto& object : indexJson["objects"]) {

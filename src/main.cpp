@@ -1,6 +1,7 @@
+#include <spdlog/spdlog.h>
 #include <CLI/CLI.hpp>
+#include <cstdlib>
 #include <filesystem>
-#include <iostream>
 #include <string>
 #include "args.hpp"
 #include "code_model_parser.hpp"
@@ -32,8 +33,7 @@ void showCmakeArgs(const std::string& project_dir) {
     }
   }
   if (!hasCMakeLists) {
-    std::cerr << "No CMakeLists.txt found in the project directory."
-              << std::endl;
+    spdlog::error("No CMakeLists.txt found in the project directory.");
     return;
   }
   auto sourceDir =
@@ -50,7 +50,7 @@ void showCmakeArgs(const std::string& project_dir) {
 #endif
 
   if (!pipe)
-    std::cerr << "Failed to execute cmake." << std::endl;
+    spdlog::error("Failed to execute cmake.");
 
   std::string output;
   char buffer[4096];
@@ -64,9 +64,36 @@ void showCmakeArgs(const std::string& project_dir) {
 #else
   pclose(pipe);
 #endif
-  std::cout << "CMake build arguments:\n" << output << std::endl;
+  spdlog::info("CMake build arguments: {}", output);
 }
-
+void clean_build_dir(const mcpp::Args& args) {
+  if (!std::filesystem::exists(args.poject_dir)) {
+    spdlog::error("Project directory does not exist: {}", args.poject_dir);
+    std::exit(EXIT_FAILURE);
+  }
+  auto build_dir = {
+      std::filesystem::absolute(std::filesystem::path(args.poject_dir) /
+                                "build"),
+      std::filesystem::absolute(std::filesystem::path(args.poject_dir) /
+                                "target"),
+      std::filesystem::absolute(std::filesystem::path(args.poject_dir) /
+                                "cmake2mcpp_generated"),
+      std::filesystem::absolute(std::filesystem::path(args.poject_dir) /
+                                "mcpp.toml"),
+      std::filesystem::absolute(std::filesystem::path(args.poject_dir) /
+                                "compile_commands.json")};
+  for (auto& dir : build_dir) {
+    if (std::filesystem::exists(dir)) {
+      spdlog::info("Cleaning build directory: {}", dir.string());
+      std::error_code ec;
+      std::filesystem::remove_all(dir, ec);
+      if (ec) {
+        spdlog::error("Failed to clean build directory: {}", ec.message());
+        std::exit(EXIT_FAILURE);
+      }
+    }
+  }
+}
 int main(int argc, char** argv) {
   /// argument parser
   mcpp::Args args;
@@ -80,9 +107,14 @@ int main(int argc, char** argv) {
   app.add_option("-D", args.cmake_args, "CMake build arguments");
   app.add_flag("-s,--show_cmake_args", args.show_cmake_args,
                "Show CMake build arguments");
+  auto clean_cmd = app.add_subcommand("clean", "Clean build directory");
   CLI11_PARSE(app, argc, argv);
   if (args.show_cmake_args) {
     showCmakeArgs(args.poject_dir);
+    return 0;
+  }
+  if (clean_cmd->parsed()) {
+    clean_build_dir(args);
     return 0;
   }
   /// 创建 cmake2mcpp 的 File API 查询
@@ -92,12 +124,12 @@ int main(int argc, char** argv) {
   }
   fs::path build_dir = fs::absolute(fs::path(args.poject_dir) / "build");
   fs::path output_file_dir = fs::absolute(fs::path(args.poject_dir));
-  std::cout << "Build directory: " << build_dir << std::endl;
+  spdlog::info("Build directory: {}", build_dir.string());
   if (!query.Create(build_dir)) {
-    std::cerr << "Failed to create File API query." << std::endl;
+    spdlog::error("Failed to create File API query.");
     return -1;
   }
-  std::cout << "File API query created successfully." << std::endl;
+  spdlog::info("File API query created successfully.");
   /// 解析 CMake File API 输出
   auto index_parser = mcpp::IndexParser(build_dir);
   auto code_model_path = index_parser.Parse();
@@ -112,12 +144,12 @@ int main(int argc, char** argv) {
     }
     targets.push_back(target.value());
   }
-  if (!mcpp::TomlWrite((output_file_dir / "mcpp.toml").string(), project,
-                       targets)) {
-    std::cerr << "Failed to write TOML file." << std::endl;
+  if (!mcpp::MainTomlWrite(fs::absolute(fs::path(args.poject_dir)), project,
+                           targets)) {
+    spdlog::error("Failed to write TOML file.");
     return -1;
   }
-  std::cout << "TOML file written successfully." << std::endl;
+  spdlog::info("TOML file written successfully.");
 
   return 0;
 }

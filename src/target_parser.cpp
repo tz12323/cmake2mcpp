@@ -1,7 +1,7 @@
 #include "target_parser.hpp"
+#include <spdlog/spdlog.h>
 #include <filesystem>
 #include <fstream>
-#include <iostream>
 #include <optional>
 #include <regex>
 #include <string>
@@ -39,12 +39,11 @@ static fs::path GetIncludeDir(const std::vector<std::string>& headers) {
 
 TargetParser::TargetParser(const fs::path& path)
     : TargetFile(path),
-      test_target({"test", "nightly", "example", "experimental", "perf"}) {};
+      test_target({"test", "nightly", "example", "experimental"}) {};
 void TargetParser::parseTargetJson() {
   std::ifstream targetFileStream(TargetFile);
   if (!targetFileStream.is_open()) {
-    std::cerr << "Failed to open target file: " << TargetFile.string()
-              << std::endl;
+    spdlog::error("Failed to open target file: {}", TargetFile.string());
     std::exit(EXIT_FAILURE);
   }
   targetFileStream >> TargetJson;

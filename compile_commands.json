@@ -2,9 +2,184 @@
   {
     "arguments": [
       "/home/tz/.mcpp/registry/data/xpkgs/xim-x-llvm/22.1.8/bin/clang++",
+      "-I/home/tz/cmake2mcpp/spdlog/include",
+      "-std=c++23",
+      "-fprebuilt-module-path=/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/pcm.cache",
+      "-O0",
+      "-g",
+      "--no-default-config",
+      "-nostdinc++",
+      "-isystem/home/tz/.mcpp/registry/data/xpkgs/xim-x-llvm/22.1.8/include/c++/v1",
+      "-isystem/home/tz/.mcpp/registry/data/xpkgs/xim-x-llvm/22.1.8/include/x86_64-unknown-linux-gnu/c++/v1",
+      "-isystem/home/tz/.mcpp/registry/data/xpkgs/xim-x-glibc/2.39/include",
+      "-isystem/home/tz/.mcpp/registry/data/xpkgs/scode-x-linux-headers/5.11.1/include",
+      "-I/home/tz/cmake2mcpp/include",
+      "-DSPDLOG_COMPILED_LIB",
+      "-c",
+      "/home/tz/cmake2mcpp/spdlog/src/stdout_sinks.cpp",
+      "-o",
+      "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/obj/spdlog/src/stdout_sinks.o"
+    ],
+    "directory": "/home/tz/cmake2mcpp",
+    "file": "/home/tz/cmake2mcpp/spdlog/src/stdout_sinks.cpp",
+    "output": "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/obj/spdlog/src/stdout_sinks.o"
+  },
+  {
+    "arguments": [
+      "/home/tz/.mcpp/registry/data/xpkgs/xim-x-llvm/22.1.8/bin/clang++",
+      "-I/home/tz/cmake2mcpp/spdlog/include",
+      "-std=c++23",
+      "-fprebuilt-module-path=/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/pcm.cache",
+      "-O0",
+      "-g",
+      "--no-default-config",
+      "-nostdinc++",
+      "-isystem/home/tz/.mcpp/registry/data/xpkgs/xim-x-llvm/22.1.8/include/c++/v1",
+      "-isystem/home/tz/.mcpp/registry/data/xpkgs/xim-x-llvm/22.1.8/include/x86_64-unknown-linux-gnu/c++/v1",
+      "-isystem/home/tz/.mcpp/registry/data/xpkgs/xim-x-glibc/2.39/include",
+      "-isystem/home/tz/.mcpp/registry/data/xpkgs/scode-x-linux-headers/5.11.1/include",
+      "-I/home/tz/cmake2mcpp/include",
+      "-DSPDLOG_COMPILED_LIB",
+      "-c",
+      "/home/tz/cmake2mcpp/spdlog/src/spdlog.cpp",
+      "-o",
+      "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/obj/spdlog/src/spdlog.o"
+    ],
+    "directory": "/home/tz/cmake2mcpp",
+    "file": "/home/tz/cmake2mcpp/spdlog/src/spdlog.cpp",
+    "output": "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/obj/spdlog/src/spdlog.o"
+  },
+  {
+    "arguments": [
+      "/home/tz/.mcpp/registry/data/xpkgs/xim-x-llvm/22.1.8/bin/clang++",
+      "-I/home/tz/cmake2mcpp/spdlog/include",
+      "-std=c++23",
+      "-fprebuilt-module-path=/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/pcm.cache",
+      "-O0",
+      "-g",
+      "--no-default-config",
+      "-nostdinc++",
+      "-isystem/home/tz/.mcpp/registry/data/xpkgs/xim-x-llvm/22.1.8/include/c++/v1",
+      "-isystem/home/tz/.mcpp/registry/data/xpkgs/xim-x-llvm/22.1.8/include/x86_64-unknown-linux-gnu/c++/v1",
+      "-isystem/home/tz/.mcpp/registry/data/xpkgs/xim-x-glibc/2.39/include",
+      "-isystem/home/tz/.mcpp/registry/data/xpkgs/scode-x-linux-headers/5.11.1/include",
+      "-I/home/tz/cmake2mcpp/include",
+      "-DSPDLOG_COMPILED_LIB",
+      "-c",
+      "/home/tz/cmake2mcpp/spdlog/src/file_sinks.cpp",
+      "-o",
+      "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/obj/spdlog/src/file_sinks.o"
+    ],
+    "directory": "/home/tz/cmake2mcpp",
+    "file": "/home/tz/cmake2mcpp/spdlog/src/file_sinks.cpp",
+    "output": "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/obj/spdlog/src/file_sinks.o"
+  },
+  {
+    "arguments": [
+      "/home/tz/.mcpp/registry/data/xpkgs/xim-x-llvm/22.1.8/bin/clang++",
+      "-I/home/tz/cmake2mcpp/spdlog/include",
+      "-std=c++23",
+      "-fprebuilt-module-path=/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/pcm.cache",
+      "-O0",
+      "-g",
+      "--no-default-config",
+      "-nostdinc++",
+      "-isystem/home/tz/.mcpp/registry/data/xpkgs/xim-x-llvm/22.1.8/include/c++/v1",
+      "-isystem/home/tz/.mcpp/registry/data/xpkgs/xim-x-llvm/22.1.8/include/x86_64-unknown-linux-gnu/c++/v1",
+      "-isystem/home/tz/.mcpp/registry/data/xpkgs/xim-x-glibc/2.39/include",
+      "-isystem/home/tz/.mcpp/registry/data/xpkgs/scode-x-linux-headers/5.11.1/include",
+      "-I/home/tz/cmake2mcpp/include",
+      "-DSPDLOG_COMPILED_LIB",
+      "-c",
+      "/home/tz/cmake2mcpp/spdlog/src/color_sinks.cpp",
+      "-o",
+      "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/obj/spdlog/src/color_sinks.o"
+    ],
+    "directory": "/home/tz/cmake2mcpp",
+    "file": "/home/tz/cmake2mcpp/spdlog/src/color_sinks.cpp",
+    "output": "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/obj/spdlog/src/color_sinks.o"
+  },
+  {
+    "arguments": [
+      "/home/tz/.mcpp/registry/data/xpkgs/xim-x-llvm/22.1.8/bin/clang++",
+      "-I/home/tz/cmake2mcpp/spdlog/include",
+      "-std=c++23",
+      "-fprebuilt-module-path=/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/pcm.cache",
+      "-O0",
+      "-g",
+      "--no-default-config",
+      "-nostdinc++",
+      "-isystem/home/tz/.mcpp/registry/data/xpkgs/xim-x-llvm/22.1.8/include/c++/v1",
+      "-isystem/home/tz/.mcpp/registry/data/xpkgs/xim-x-llvm/22.1.8/include/x86_64-unknown-linux-gnu/c++/v1",
+      "-isystem/home/tz/.mcpp/registry/data/xpkgs/xim-x-glibc/2.39/include",
+      "-isystem/home/tz/.mcpp/registry/data/xpkgs/scode-x-linux-headers/5.11.1/include",
+      "-I/home/tz/cmake2mcpp/include",
+      "-DSPDLOG_COMPILED_LIB",
+      "-c",
+      "/home/tz/cmake2mcpp/spdlog/src/cfg.cpp",
+      "-o",
+      "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/obj/spdlog/src/cfg.o"
+    ],
+    "directory": "/home/tz/cmake2mcpp",
+    "file": "/home/tz/cmake2mcpp/spdlog/src/cfg.cpp",
+    "output": "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/obj/spdlog/src/cfg.o"
+  },
+  {
+    "arguments": [
+      "/home/tz/.mcpp/registry/data/xpkgs/xim-x-llvm/22.1.8/bin/clang++",
+      "-I/home/tz/cmake2mcpp/spdlog/include",
+      "-std=c++23",
+      "-fprebuilt-module-path=/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/pcm.cache",
+      "-O0",
+      "-g",
+      "--no-default-config",
+      "-nostdinc++",
+      "-isystem/home/tz/.mcpp/registry/data/xpkgs/xim-x-llvm/22.1.8/include/c++/v1",
+      "-isystem/home/tz/.mcpp/registry/data/xpkgs/xim-x-llvm/22.1.8/include/x86_64-unknown-linux-gnu/c++/v1",
+      "-isystem/home/tz/.mcpp/registry/data/xpkgs/xim-x-glibc/2.39/include",
+      "-isystem/home/tz/.mcpp/registry/data/xpkgs/scode-x-linux-headers/5.11.1/include",
+      "-I/home/tz/cmake2mcpp/include",
+      "-DSPDLOG_COMPILED_LIB",
+      "-c",
+      "/home/tz/cmake2mcpp/spdlog/src/bundled_fmtlib_format.cpp",
+      "-o",
+      "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/obj/spdlog/src/bundled_fmtlib_format.o"
+    ],
+    "directory": "/home/tz/cmake2mcpp",
+    "file": "/home/tz/cmake2mcpp/spdlog/src/bundled_fmtlib_format.cpp",
+    "output": "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/obj/spdlog/src/bundled_fmtlib_format.o"
+  },
+  {
+    "arguments": [
+      "/home/tz/.mcpp/registry/data/xpkgs/xim-x-llvm/22.1.8/bin/clang++",
+      "-I/home/tz/cmake2mcpp/spdlog/include",
+      "-std=c++23",
+      "-fprebuilt-module-path=/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/pcm.cache",
+      "-O0",
+      "-g",
+      "--no-default-config",
+      "-nostdinc++",
+      "-isystem/home/tz/.mcpp/registry/data/xpkgs/xim-x-llvm/22.1.8/include/c++/v1",
+      "-isystem/home/tz/.mcpp/registry/data/xpkgs/xim-x-llvm/22.1.8/include/x86_64-unknown-linux-gnu/c++/v1",
+      "-isystem/home/tz/.mcpp/registry/data/xpkgs/xim-x-glibc/2.39/include",
+      "-isystem/home/tz/.mcpp/registry/data/xpkgs/scode-x-linux-headers/5.11.1/include",
+      "-I/home/tz/cmake2mcpp/include",
+      "-DSPDLOG_COMPILED_LIB",
+      "-c",
+      "/home/tz/cmake2mcpp/spdlog/src/async.cpp",
+      "-o",
+      "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/obj/spdlog/src/async.o"
+    ],
+    "directory": "/home/tz/cmake2mcpp",
+    "file": "/home/tz/cmake2mcpp/spdlog/src/async.cpp",
+    "output": "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/obj/spdlog/src/async.o"
+  },
+  {
+    "arguments": [
+      "/home/tz/.mcpp/registry/data/xpkgs/xim-x-llvm/22.1.8/bin/clang++",
       "-I/home/tz/.mcpp/registry/data/xpkgs/nlohmann-x-json/3.12.0/json-3.12.0/single_include",
       "-std=c++23",
-      "-fprebuilt-module-path=/home/tz/cmake2mcpp/target/x86_64-linux-gnu/7168e0eedbec6cac/pcm.cache",
+      "-fprebuilt-module-path=/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/pcm.cache",
       "-O0",
       "-g",
       "--no-default-config",
@@ -17,18 +192,18 @@
       "-c",
       "/home/tz/.mcpp/registry/data/xpkgs/nlohmann-x-json/3.12.0/mcpp_generated/nlohmann.json.cppm",
       "-o",
-      "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/7168e0eedbec6cac/obj/nlohmann_json/mcpp_generated/nlohmann.json.m.o"
+      "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/obj/nlohmann_json/mcpp_generated/nlohmann.json.m.o"
     ],
     "directory": "/home/tz/cmake2mcpp",
     "file": "/home/tz/.mcpp/registry/data/xpkgs/nlohmann-x-json/3.12.0/mcpp_generated/nlohmann.json.cppm",
-    "output": "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/7168e0eedbec6cac/obj/nlohmann_json/mcpp_generated/nlohmann.json.m.o"
+    "output": "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/obj/nlohmann_json/mcpp_generated/nlohmann.json.m.o"
   },
   {
     "arguments": [
       "/home/tz/.mcpp/registry/data/xpkgs/xim-x-llvm/22.1.8/bin/clang++",
       "-I/home/tz/.mcpp/registry/data/xpkgs/marzer-x-tomlplusplus/3.4.0/tomlplusplus-3.4.0/include",
       "-std=c++23",
-      "-fprebuilt-module-path=/home/tz/cmake2mcpp/target/x86_64-linux-gnu/7168e0eedbec6cac/pcm.cache",
+      "-fprebuilt-module-path=/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/pcm.cache",
       "-O0",
       "-g",
       "--no-default-config",
@@ -41,18 +216,18 @@
       "-c",
       "/home/tz/.mcpp/registry/data/xpkgs/marzer-x-tomlplusplus/3.4.0/mcpp_generated/tomlplusplus.cppm",
       "-o",
-      "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/7168e0eedbec6cac/obj/marzer_tomlplusplus/mcpp_generated/tomlplusplus.m.o"
+      "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/obj/marzer_tomlplusplus/mcpp_generated/tomlplusplus.m.o"
     ],
     "directory": "/home/tz/cmake2mcpp",
     "file": "/home/tz/.mcpp/registry/data/xpkgs/marzer-x-tomlplusplus/3.4.0/mcpp_generated/tomlplusplus.cppm",
-    "output": "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/7168e0eedbec6cac/obj/marzer_tomlplusplus/mcpp_generated/tomlplusplus.m.o"
+    "output": "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/obj/marzer_tomlplusplus/mcpp_generated/tomlplusplus.m.o"
   },
   {
     "arguments": [
       "/home/tz/.mcpp/registry/data/xpkgs/xim-x-llvm/22.1.8/bin/clang++",
       "-I/home/tz/cmake2mcpp/CLI11-2.7.2/include",
       "-std=c++23",
-      "-fprebuilt-module-path=/home/tz/cmake2mcpp/target/x86_64-linux-gnu/7168e0eedbec6cac/pcm.cache",
+      "-fprebuilt-module-path=/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/pcm.cache",
       "-O0",
       "-g",
       "--no-default-config",
@@ -65,18 +240,18 @@
       "-c",
       "/home/tz/cmake2mcpp/CLI11-2.7.2/src/modules/CLI11.cppm",
       "-o",
-      "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/7168e0eedbec6cac/obj/CLI11/src/modules/CLI11.m.o"
+      "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/obj/CLI11/src/modules/CLI11.m.o"
     ],
     "directory": "/home/tz/cmake2mcpp",
     "file": "/home/tz/cmake2mcpp/CLI11-2.7.2/src/modules/CLI11.cppm",
-    "output": "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/7168e0eedbec6cac/obj/CLI11/src/modules/CLI11.m.o"
+    "output": "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/obj/CLI11/src/modules/CLI11.m.o"
   },
   {
     "arguments": [
       "/home/tz/.mcpp/registry/data/xpkgs/xim-x-llvm/22.1.8/bin/clang++",
       "-I/home/tz/cmake2mcpp/CLI11-2.7.2/include",
       "-std=c++23",
-      "-fprebuilt-module-path=/home/tz/cmake2mcpp/target/x86_64-linux-gnu/7168e0eedbec6cac/pcm.cache",
+      "-fprebuilt-module-path=/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/pcm.cache",
       "-O0",
       "-g",
       "--no-default-config",
@@ -89,11 +264,11 @@
       "-c",
       "/home/tz/cmake2mcpp/CLI11-2.7.2/src/Precompile.cpp",
       "-o",
-      "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/7168e0eedbec6cac/obj/CLI11/src/Precompile.o"
+      "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/obj/CLI11/src/Precompile.o"
     ],
     "directory": "/home/tz/cmake2mcpp",
     "file": "/home/tz/cmake2mcpp/CLI11-2.7.2/src/Precompile.cpp",
-    "output": "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/7168e0eedbec6cac/obj/CLI11/src/Precompile.o"
+    "output": "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/obj/CLI11/src/Precompile.o"
   },
   {
     "arguments": [
@@ -102,8 +277,9 @@
       "-I/home/tz/cmake2mcpp/CLI11-2.7.2/include",
       "-I/home/tz/.mcpp/registry/data/xpkgs/marzer-x-tomlplusplus/3.4.0/tomlplusplus-3.4.0/include",
       "-I/home/tz/.mcpp/registry/data/xpkgs/nlohmann-x-json/3.12.0/json-3.12.0/single_include",
+      "-I/home/tz/cmake2mcpp/spdlog/include",
       "-std=c++23",
-      "-fprebuilt-module-path=/home/tz/cmake2mcpp/target/x86_64-linux-gnu/7168e0eedbec6cac/pcm.cache",
+      "-fprebuilt-module-path=/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/pcm.cache",
       "-O0",
       "-g",
       "--no-default-config",
@@ -116,11 +292,11 @@
       "-c",
       "/home/tz/cmake2mcpp/src/toml_writer.cpp",
       "-o",
-      "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/7168e0eedbec6cac/obj/toml_writer.o"
+      "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/obj/toml_writer.o"
     ],
     "directory": "/home/tz/cmake2mcpp",
     "file": "/home/tz/cmake2mcpp/src/toml_writer.cpp",
-    "output": "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/7168e0eedbec6cac/obj/toml_writer.o"
+    "output": "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/obj/toml_writer.o"
   },
   {
     "arguments": [
@@ -129,8 +305,9 @@
       "-I/home/tz/cmake2mcpp/CLI11-2.7.2/include",
       "-I/home/tz/.mcpp/registry/data/xpkgs/marzer-x-tomlplusplus/3.4.0/tomlplusplus-3.4.0/include",
       "-I/home/tz/.mcpp/registry/data/xpkgs/nlohmann-x-json/3.12.0/json-3.12.0/single_include",
+      "-I/home/tz/cmake2mcpp/spdlog/include",
       "-std=c++23",
-      "-fprebuilt-module-path=/home/tz/cmake2mcpp/target/x86_64-linux-gnu/7168e0eedbec6cac/pcm.cache",
+      "-fprebuilt-module-path=/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/pcm.cache",
       "-O0",
       "-g",
       "--no-default-config",
@@ -143,11 +320,11 @@
       "-c",
       "/home/tz/cmake2mcpp/src/target_parser.cpp",
       "-o",
-      "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/7168e0eedbec6cac/obj/target_parser.o"
+      "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/obj/target_parser.o"
     ],
     "directory": "/home/tz/cmake2mcpp",
     "file": "/home/tz/cmake2mcpp/src/target_parser.cpp",
-    "output": "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/7168e0eedbec6cac/obj/target_parser.o"
+    "output": "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/obj/target_parser.o"
   },
   {
     "arguments": [
@@ -156,8 +333,9 @@
       "-I/home/tz/cmake2mcpp/CLI11-2.7.2/include",
       "-I/home/tz/.mcpp/registry/data/xpkgs/marzer-x-tomlplusplus/3.4.0/tomlplusplus-3.4.0/include",
       "-I/home/tz/.mcpp/registry/data/xpkgs/nlohmann-x-json/3.12.0/json-3.12.0/single_include",
+      "-I/home/tz/cmake2mcpp/spdlog/include",
       "-std=c++23",
-      "-fprebuilt-module-path=/home/tz/cmake2mcpp/target/x86_64-linux-gnu/7168e0eedbec6cac/pcm.cache",
+      "-fprebuilt-module-path=/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/pcm.cache",
       "-O0",
       "-g",
       "--no-default-config",
@@ -170,11 +348,11 @@
       "-c",
       "/home/tz/cmake2mcpp/src/main.cpp",
       "-o",
-      "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/7168e0eedbec6cac/obj/main.o"
+      "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/obj/main.o"
     ],
     "directory": "/home/tz/cmake2mcpp",
     "file": "/home/tz/cmake2mcpp/src/main.cpp",
-    "output": "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/7168e0eedbec6cac/obj/main.o"
+    "output": "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/obj/main.o"
   },
   {
     "arguments": [
@@ -183,8 +361,9 @@
       "-I/home/tz/cmake2mcpp/CLI11-2.7.2/include",
       "-I/home/tz/.mcpp/registry/data/xpkgs/marzer-x-tomlplusplus/3.4.0/tomlplusplus-3.4.0/include",
       "-I/home/tz/.mcpp/registry/data/xpkgs/nlohmann-x-json/3.12.0/json-3.12.0/single_include",
+      "-I/home/tz/cmake2mcpp/spdlog/include",
       "-std=c++23",
-      "-fprebuilt-module-path=/home/tz/cmake2mcpp/target/x86_64-linux-gnu/7168e0eedbec6cac/pcm.cache",
+      "-fprebuilt-module-path=/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/pcm.cache",
       "-O0",
       "-g",
       "--no-default-config",
@@ -197,11 +376,11 @@
       "-c",
       "/home/tz/cmake2mcpp/src/index_parser.cpp",
       "-o",
-      "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/7168e0eedbec6cac/obj/index_parser.o"
+      "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/obj/index_parser.o"
     ],
     "directory": "/home/tz/cmake2mcpp",
     "file": "/home/tz/cmake2mcpp/src/index_parser.cpp",
-    "output": "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/7168e0eedbec6cac/obj/index_parser.o"
+    "output": "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/obj/index_parser.o"
   },
   {
     "arguments": [
@@ -210,8 +389,9 @@
       "-I/home/tz/cmake2mcpp/CLI11-2.7.2/include",
       "-I/home/tz/.mcpp/registry/data/xpkgs/marzer-x-tomlplusplus/3.4.0/tomlplusplus-3.4.0/include",
       "-I/home/tz/.mcpp/registry/data/xpkgs/nlohmann-x-json/3.12.0/json-3.12.0/single_include",
+      "-I/home/tz/cmake2mcpp/spdlog/include",
       "-std=c++23",
-      "-fprebuilt-module-path=/home/tz/cmake2mcpp/target/x86_64-linux-gnu/7168e0eedbec6cac/pcm.cache",
+      "-fprebuilt-module-path=/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/pcm.cache",
       "-O0",
       "-g",
       "--no-default-config",
@@ -224,11 +404,11 @@
       "-c",
       "/home/tz/cmake2mcpp/src/file_api_query.cpp",
       "-o",
-      "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/7168e0eedbec6cac/obj/file_api_query.o"
+      "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/obj/file_api_query.o"
     ],
     "directory": "/home/tz/cmake2mcpp",
     "file": "/home/tz/cmake2mcpp/src/file_api_query.cpp",
-    "output": "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/7168e0eedbec6cac/obj/file_api_query.o"
+    "output": "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/obj/file_api_query.o"
   },
   {
     "arguments": [
@@ -237,8 +417,9 @@
       "-I/home/tz/cmake2mcpp/CLI11-2.7.2/include",
       "-I/home/tz/.mcpp/registry/data/xpkgs/marzer-x-tomlplusplus/3.4.0/tomlplusplus-3.4.0/include",
       "-I/home/tz/.mcpp/registry/data/xpkgs/nlohmann-x-json/3.12.0/json-3.12.0/single_include",
+      "-I/home/tz/cmake2mcpp/spdlog/include",
       "-std=c++23",
-      "-fprebuilt-module-path=/home/tz/cmake2mcpp/target/x86_64-linux-gnu/7168e0eedbec6cac/pcm.cache",
+      "-fprebuilt-module-path=/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/pcm.cache",
       "-O0",
       "-g",
       "--no-default-config",
@@ -251,10 +432,10 @@
       "-c",
       "/home/tz/cmake2mcpp/src/code_model_parser.cpp",
       "-o",
-      "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/7168e0eedbec6cac/obj/code_model_parser.o"
+      "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/obj/code_model_parser.o"
     ],
     "directory": "/home/tz/cmake2mcpp",
     "file": "/home/tz/cmake2mcpp/src/code_model_parser.cpp",
-    "output": "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/7168e0eedbec6cac/obj/code_model_parser.o"
+    "output": "/home/tz/cmake2mcpp/target/x86_64-linux-gnu/36b3fea84e1f8d08/obj/code_model_parser.o"
   }
 ]

@@ -1,0 +1,20 @@
+[build]
+include_dirs = ['include']
+sources = [
+    'src/async.cpp',
+    'src/bundled_fmtlib_format.cpp',
+    'src/cfg.cpp',
+    'src/color_sinks.cpp',
+    'src/file_sinks.cpp',
+    'src/spdlog.cpp',
+    'src/stdout_sinks.cpp',
+]
+defines = ['SPDLOG_COMPILED_LIB']
+[package]
+name = 'spdlog'
+version = '0.1.0'
+
+[targets.spdlog]
+cxxflags = ['-O3 -DNDEBUG']
+
+kind = 'lib'

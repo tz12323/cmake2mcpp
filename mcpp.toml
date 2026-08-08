@@ -7,3 +7,4 @@ license = "MIT"
 marzer.tomlplusplus = "3.4.0"
 nlohmann.json = "3.12.0"
 CLI11 = { path = "./CLI11-2.7.2" }
+spdlog = { path = "./spdlog" }

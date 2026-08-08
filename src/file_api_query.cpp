@@ -2,8 +2,7 @@
 #include <cstdlib>
 #include <filesystem>
 #include <fstream>
-#include <iostream>
-#include <print>
+#include <spdlog/spdlog.h>
 #include <vector>
 
 #ifdef _WIN32
@@ -54,8 +53,7 @@ bool FileApiQuery::Create(const fs::path& buildDir,
     }
   }
   if (!hasCMakeLists) {
-    std::cerr << "No CMakeLists.txt found in the project directory."
-              << std::endl;
+    spdlog::error("No CMakeLists.txt found in the project directory.");
     return false;
   }
 
@@ -77,9 +75,9 @@ bool FileApiQuery::Create(const fs::path& buildDir,
     ok &= Touch(queryDir / "toolchains-v1");
     if (!CmakeVersionCompare(GetCMakeVersion(), "3.26.0")) {
       ok &= Touch(queryDir / "configureLog-v1");
-      std::cout << "CMake version >= 3.26, configureLog-v1 created\n";
+      spdlog::info("CMake version >= 3.26, configureLog-v1 created");
     } else {
-      std::cout << "CMake version < 3.26, configureLog-v1 not created\n";
+      spdlog::info("CMake version < 3.26, configureLog-v1 not created");
     }
     auto command =
         (CmakeExecutablePath.empty() ? "cmake" : CmakeExecutablePath.string()) +
@@ -88,7 +86,7 @@ bool FileApiQuery::Create(const fs::path& buildDir,
     for (const auto& arg : cmake_args) {
       command += " -D" + arg;
     }
-    std::cout << "Executing command: " << command << std::endl;
+    spdlog::info("Executing command: {}", command);
     command = command + " > " + std::string(NullDevice) + " 2>&1";
 
     system(command.c_str());
@@ -108,7 +106,7 @@ bool FileApiQuery::Create(const fs::path& buildDir,
 std::string FileApiQuery::GetCMakeVersion() {
   const char* cmd;
   if (CmakeExecutablePath.empty()) {
-    std::println(
+    spdlog::info(
         "CMake executable path not specified, using 'cmake --version' from "
         "PATH.");
     cmd = "cmake --version";  // 未指定 CMake 可执行文件路径

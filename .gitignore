@@ -1,2 +1,4 @@
 target/
 compile_commands.json
+*test*/
+.cache/

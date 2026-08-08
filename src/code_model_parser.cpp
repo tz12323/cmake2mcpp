@@ -1,7 +1,7 @@
 #include "code_model_parser.hpp"
+#include <spdlog/spdlog.h>
 #include <filesystem>
 #include <fstream>
-#include <iostream>
 namespace mcpp {
 CodeModelParser::CodeModelParser(const fs::path& path)
     : code_model_path(path),
@@ -10,13 +10,13 @@ CodeModelParser::CodeModelParser(const fs::path& path,
                                  const std::vector<std::string>& test_target)
     : code_model_path(path), test_target(test_target) {};
 void CodeModelParser::ReadCodeModelFile() {
-  std::cout << "Reading code model file: " << code_model_path << std::endl;
+  spdlog::info("Reading code model file: {}", code_model_path.string());
   std::ifstream file(code_model_path);
   if (file.is_open()) {
     file >> code_model_json;
   } else {
-    std::cerr << "Failed to open code model file: " << code_model_path.string()
-              << std::endl;
+    spdlog::error("Failed to open code model file: {}",
+                  code_model_path.string());
     std::exit(EXIT_FAILURE);
   }
 };
