@@ -1,3 +1,7 @@
+#ifdef _WIN32
+#pragma comment(lib, "Shell32.lib")
+#endif
+
 #include <spdlog/spdlog.h>
 #include <CLI/CLI.hpp>
 #include <cstdlib>
